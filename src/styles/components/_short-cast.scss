@@ -1,0 +1,36 @@
+.current-weather__short-cast {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.short-cast {
+    width: 27%;
+}
+
+.short-cast__image {
+    margin: 0 auto -2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.short-cast__conditions {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: -.5rem;
+}
+
+.short-cast__text {
+    color: $primary;
+}
+
+@media (min-width: $tablet-breakpoint) {
+    .short-cast__conditions {
+       font-size: 1.9rem;
+    }
+    
+    .short-cast__text {
+       font-size: 1.3rem;
+    }
+}

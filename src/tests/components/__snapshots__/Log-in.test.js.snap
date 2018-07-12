@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should rener LogIn page 1`] = `
+<div
+  className="log-in"
+>
+  <div
+    className="log-in__container"
+  >
+    <div
+      className="log-in__text__container"
+    >
+      <h1>
+        Title
+      </h1>
+      <p>
+        Subtitle
+      </p>
+    </div>
+    <button>
+      Log In
+    </button>
+  </div>
+</div>
+`;

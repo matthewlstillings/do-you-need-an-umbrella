@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    font-family: $main-font;
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    font-size: 62.5%;
+    background: $backgroundDark;
+    color: $backgroundLight;
+}
+
+html.add-light {
+    background: $backgroundLight;
+    color: $backgroundDark;
+}
+
+body {
+    margin: 0;
+    
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

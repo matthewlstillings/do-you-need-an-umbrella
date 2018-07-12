@@ -1,0 +1,61 @@
+.header {
+    background: lighten($backgroundDark, 5%);
+    text-align: center;
+    width: 100%;
+}
+
+.header.add-light {
+    background: darken($backgroundLight, 5%);
+}
+
+.header__title {
+    margin: 0;
+    padding: 1.5rem;
+    font-size: 2.4rem;
+}
+
+.nav {
+    background: $backgroundDark;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0 0 1rem;
+}
+
+.nav.add-light {
+    background: $backgroundLight;
+    .nav-link {
+        background: darken($backgroundLight, 5%);
+    }
+    .nav-link.is-active {
+        background: $backgroundLight;
+    }
+}
+
+.nav-link {
+    background: lighten($backgroundDark, 5%);
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+    width: 50%;
+}
+
+.is-active {
+    color: $primary;
+    font-weight: 800;
+    background: $backgroundDark;
+}
+
+@media (min-width: $tablet-breakpoint) {
+    .header__title {
+        padding: 2.5rem;
+        font-size: 3rem;
+    }
+
+    .nav-link {
+        font-size: 1.8rem;
+    }
+}
+

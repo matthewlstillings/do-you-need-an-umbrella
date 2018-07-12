@@ -1,0 +1,21 @@
+import React from 'react';
+
+const ExtendedCastDay = (props) => (
+    <div className="extended-forecast__day">
+        <div className="extended-forecast__day__date-container">
+            <h1 className="extended-forecast__title">{props.weekday}</h1>
+            <div className="extended-forecast__month-container">
+                <h1 className="extended-forecast__month">{props.month}</h1>
+                <h1 className="extended-forecast__month-day">{props.monthDay}</h1>
+            </div>  
+        </div>
+        <div className="extended-forecast__temp-container">
+            <h2 className="extended-forecast__temp">H: {props.highF + String.fromCharCode(176)}</h2>
+            <h2 className="extended-forecast__temp">L: {props.lowF + String.fromCharCode(176)}</h2>
+        </div>  
+        <p className="extended-forecast__condition">{props.conditions}</p>
+        <img className="extended-forecast__image" src={'./images/WeatherIcons/' + props.iconImage + '.svg'}/>    
+    </div>
+)
+
+export default ExtendedCastDay;

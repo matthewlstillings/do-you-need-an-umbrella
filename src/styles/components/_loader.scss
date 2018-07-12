@@ -1,0 +1,59 @@
+.loader-container {
+    margin: auto;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    width: 100%;
+}
+
+.loader {
+    margin: auto;
+    margin-top: 15rem;
+    width: 300px;
+}
+
+.loading-div {
+    background: $backgroundDark;
+    color: $primary;
+    text-align: center;
+    width: 100%;
+    min-height: 400px;
+    padding: 1rem;
+    position: relative;
+}
+
+.loading-div.add-light {
+    background: $backgroundLight;
+}
+
+.loader-icon {
+    width: 100px;
+    min-height: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -10;
+}
+
+.firstIcon {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.secondIcon {
+    animation: bounce 2s ease-in-out 1s infinite;
+}
+
+@keyframes bounce {
+    0% {
+        margin: 0px auto 0px;
+    }
+    50% {
+        margin: -110px auto 0px;
+    }
+    100% {
+        margin: 0px auto 0px;
+    }
+}
+
+
+
