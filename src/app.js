@@ -7,13 +7,9 @@ import {fetchCity, fetchState, fetchTemp, fetchCondition, fetchSun, fetchFutureC
 import {APIbuild} from './actions/api';
 import {setExtendedCast} from './actions/extendedCast';
 import {setShortCast} from './actions/short-cast';
-//import {login, logout} from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import { setTimeout } from 'timers';
-import moment from 'moment';
 import 'react-dates/lib/css/_datepicker.css';
-//import {firebase} from './firebase/firebase';
 
 
 const store = configureStore();
