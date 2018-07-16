@@ -5,7 +5,9 @@ const currentWeatherDefaultState = {
     city: '',
     state: '',
     temperature: '',
-    condition: ''
+    condition: '',
+    futureCondition: '',
+    sunPosition: false
 };
 export default (state = currentWeatherDefaultState, action) => {
     switch (action.type) {
@@ -28,6 +30,16 @@ export default (state = currentWeatherDefaultState, action) => {
         return {
             ...state,
             condition: action.condition
+        };
+        case 'CURRENT_SUN':
+        return {
+            ...state,
+            sunPosition: action.sunPosition
+        };
+        case 'FUTURE_CONDITION':
+        return {
+            ...state,
+            futureCondition: action.condition
         };
         default:
             return state;

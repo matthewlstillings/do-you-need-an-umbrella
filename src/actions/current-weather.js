@@ -19,3 +19,13 @@ export const fetchCondition = (condition = '') => ({
     type: 'CURRENT_CONDITION',
     condition
 });
+
+export const fetchSun = (sunPosition) => ({
+    type: 'CURRENT_SUN',
+    sunPosition
+});
+
+export const fetchFutureCondition = (condition) => ({
+    type: 'FUTURE_CONDITION',
+    condition
+});

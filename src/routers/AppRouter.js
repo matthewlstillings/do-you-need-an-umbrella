@@ -15,7 +15,7 @@ const AppRouter = () => (
             <Header />
             <Switch>
                 <Route
-                    path="/" 
+                    path="/weather" 
                     component={CurrentWeather}
                     exact={true}
                 />
