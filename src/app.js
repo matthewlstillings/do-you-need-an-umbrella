@@ -91,43 +91,7 @@ const renderApp = () => {
          hasRendered = true;
     }
 };
-
-//Loader Code - Could add to own component
-const loader = (
-    <div className="loader__container">
-        <div className="loader">
-            <div className="circle is-red"></div>
-            <div className="circle is-green"></div>
-        </div>
-    </div>
-);
-
-ReactDOM.render(loader, document.getElementById('root')); 
+ 
 renderApp();
 
-{/*
-//Login Actions
-firebase.auth().onAuthStateChanged((user)=>{ //Firebase Functions
-    if (user) {
-        store.dispatch(login(user.uid));
-        renderApp()
-        if (history.location.pathname === '/') {
-            history.push('/dashboard');
-        }
-       
-    } else {
-        store.dispatch(logout());
-        renderApp();
-        history.push('/');
-    }
-})
-
-
-
-
- let i = 0;
-setInterval(() =>{
-    i++;
-    console.log(store.getState().currentWeather, i)
-}, 2000); */}
 
