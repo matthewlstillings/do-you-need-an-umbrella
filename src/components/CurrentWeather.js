@@ -197,7 +197,7 @@ export class CurrentWeather extends React.Component {
                             </div>
 
                             <div className="current-weather__conditions">
-                                <h1 className="current-weather__temp">{this.state.forecast}</h1>
+                                <h2 className="current-weather__temp">{this.state.forecast}</h2>
                             </div>
                         
                             <div className="current-weather__short-cast">
