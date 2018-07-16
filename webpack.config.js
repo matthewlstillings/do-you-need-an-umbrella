@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const polyfill = require('babel-polyfill');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -16,7 +17,7 @@ module.exports = (env) => {
 
   return {
     entry: [
-      'babel-polyfill',
+      polyfill,
       './src/app.js'
     ],
     output: {
