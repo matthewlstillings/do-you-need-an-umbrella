@@ -190,7 +190,7 @@ export class CurrentWeather extends React.Component {
                             </div>
                                 <div className="current-weather__conditions">
                                     <h1 className="current-weather__temp">
-                                        {this.props.currentWeather.temperature + String.fromCharCode(176)} F - {this.props.currentWeather.condition} 
+                                        {this.props.currentWeather.temperature + String.fromCharCode(176)}F - {this.props.currentWeather.condition} 
                                     </h1>
                                     <h3 className="current-weather__location">{this.props.currentWeather.city}, {this.props.currentWeather.state}</h3>
                                 </div>  

@@ -12,6 +12,7 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 
 
+
 const store = configureStore();
 
 //Build the API
@@ -71,6 +72,7 @@ const buildAPI = () => {
 
 //Call Weather Fetch
 buildAPI();
+
 
 //Calls app using provider from react-store
 const jsx = (
