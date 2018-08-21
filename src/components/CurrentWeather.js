@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
-import { fetchCity, fetchState, fetchCondition, fetchTemp } from '../actions/current-weather';
+import Search from './Search';
 import ShortCast from './ShortCast';
-import ExtendedCastDay from './ExtendedCastDays';
 import Loader from './Loader';
 
 
@@ -11,7 +9,8 @@ export class CurrentWeather extends React.Component {
     state = {
         shortCast: '',
         iconCurrent: '',
-        forecast: ''
+        forecast: '',
+        loader: false
     }
     getWeatherIcon = () => {
         let condition = this.props.currentWeather.condition;
@@ -125,7 +124,7 @@ export class CurrentWeather extends React.Component {
                 this.setState(()=>({forecast: 'Bring a shovel instead.'}))
             break;
             case 'Clear':
-                this.setState(()=>({forecast: 'No umbrella unless you fair skinned.'}))
+                this.setState(()=>({forecast: 'No umbrella but grab some sunblock if you\'re pasty.'}))
             break;
             case 'Overcast':
                 this.setState(()=>({forecast: 'No umbrella needed but can you ever really trust clouds?'}))
@@ -161,61 +160,78 @@ export class CurrentWeather extends React.Component {
     
         }
     }
-    componentDidMount = () => {
+    loadWeather = () => {
+         let i = 0;
+         let initInterval = setInterval(()=> {
+                 i += 1;
+                 if (i < 8) {
+                     this.setState(() => ({loader: true}));
+                     this.getWeatherIcon();
+                     this.getUmbrellaForecast();
+                 } 
+         }, 1000);
+    }
+    setLoader = () => {
         let i = 0;
-        let initInterval = setInterval(()=> {
-            if (this.props.currentWeather) {
-                i += 1;
-                if (i < 10) {
-                    this.setState(()=> ({render: true}));
-                    this.getWeatherIcon();
-                    this.getUmbrellaForecast();
-                    console.log(this.state.forecast);
-                }
+        let interval = setInterval(()=>{
+            i += 1;
+            if (i < 3) {
+                this.setState(()=>({loader: false}));
+            } else if (i>3) {
+                this.setState(()=>({loader: true}))
             }
-        }, 2000);
+        }, 1000)
+    }
+    componentDidMount = () => {
+        this.loadWeather();
     }
     render() {
         return (
             
             <div>
                 <h1 className="extended-forecast__title">Current Weather</h1>
-                {this.state.iconCurrent === ''  ? (<Loader />) : (
-                    <div className="current-weather">
-                        
-                        <div className="current-weather__container">
-                        
-                            <div className="current-weather__image-container">
-                                <img className="current-weather__image" src={'./images/WeatherIcons/' + this.state.iconCurrent + '.svg'} /> 
-                            </div>
+                <Search onSubmit={
+                    this.setLoader
+                } />
+                {this.state.loader == false ? (<Loader />)
+                     : ( this.state.iconCurrent === ''  ? (<Loader />) 
+                        : ( <div className="current-weather">
+                            
+                            <div className="current-weather__container">
+                            
+                                <div className="current-weather__image-container">
+                                    <img className="current-weather__image" src={'./images/WeatherIcons/' + this.state.iconCurrent + '.svg'} /> 
+                                </div>
+                                    <div className="current-weather__conditions">
+                                        <h1 className="current-weather__temp">
+                                            {this.props.currentWeather.temperature + String.fromCharCode(176)}F - {this.props.currentWeather.condition} 
+                                        </h1>
+                                        <h3 className="current-weather__location">{this.props.currentWeather.city}, {this.props.currentWeather.state}</h3>
+                                    </div>  
+                                </div>
+
                                 <div className="current-weather__conditions">
-                                    <h1 className="current-weather__temp">
-                                        {this.props.currentWeather.temperature + String.fromCharCode(176)}F - {this.props.currentWeather.condition} 
-                                    </h1>
-                                    <h3 className="current-weather__location">{this.props.currentWeather.city}, {this.props.currentWeather.state}</h3>
-                                </div>  
-                            </div>
+                                    <h2 className="current-weather__temp">{this.state.forecast}</h2>
+                                </div>
+                            
+                                <div className="current-weather__short-cast">
+                                    { 
+                                        this.props.shortCast.map((day)=> 
+                                            <ShortCast 
+                                                key={day.period + 1}
+                                                iconImage={day.icon}
+                                                title={day.title}
+                                                text={day.fcttext}
+                                            />
+                                        )
+                                        
+                                    }
+                                </div>
 
-                            <div className="current-weather__conditions">
-                                <h2 className="current-weather__temp">{this.state.forecast}</h2>
                             </div>
-                        
-                            <div className="current-weather__short-cast">
-                                { 
-                                    this.props.shortCast.map((day)=> 
-                                        <ShortCast 
-                                            key={day.period + 1}
-                                            iconImage={day.icon}
-                                            title={day.title}
-                                            text={day.fcttext}
-                                        />
-                                    )
-                                    
-                                }
-                            </div>
-
-                    </div>
-                )}
+                        )
+                    )
+                }
             </div>
             
         )
@@ -225,6 +241,7 @@ export class CurrentWeather extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        api: state.api,
         currentWeather: state.currentWeather,
         shortCast: state.shortCast
     };

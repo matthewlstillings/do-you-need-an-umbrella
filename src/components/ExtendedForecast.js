@@ -2,10 +2,22 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ExtendedCastDay from './ExtendedCastDays';
 import Loader from './Loader';
+import Search from './Search';
 
 export class ExtendedForecast extends React.Component {
     state = {
-        render: false
+        loader: false
+    }
+    setLoader = () => {
+        let i = 0;
+        let interval = setInterval(()=>{
+            i += 1;
+            if (i < 3) {
+                this.setState(()=>({loader: false}));
+            } else if (i > 3) {
+                this.setState(()=>({loader: true}))
+            }
+        }, 1000)
     }
     componentDidMount = () => {
         let i = 0;
@@ -13,19 +25,20 @@ export class ExtendedForecast extends React.Component {
             if (this.props.forecast) {
                 i += 1;
                 if (i < 6) {
-                    this.setState(() => ({render: true}));
+                    this.setState(() => ({loader: true}));
                 }
             }
-        }, 1000);
+        }, 500);
     }
     render() {
         return (
             
             <div className="extended-forecast">
                 <h1 className="extended-forecast__title">Extended Forecast</h1>
+                <Search onSubmit={this.setLoader}/>
                 <div className="extended-forecast__container">
                 {
-                    this.state.render === true ? (
+                    this.state.loader === true ? (
                     this.props.forecast.map((day) => 
                         <ExtendedCastDay 
                             key={day.date.weekday}

@@ -7,6 +7,10 @@ export default (state = extendedCastDefaultState, action) => {
             ...state,
             action.forecast
         ]
+
+        case 'CLEAR_EC':
+        return []
+
         default: 
         return state;
     }

@@ -1,5 +1,5 @@
 @import './base/variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,400,600,800,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 @import './base/base.scss';
 
 //Components
@@ -11,3 +11,4 @@
 @import './components/extended-cast-page.scss';
 @import './components/extended-cast-day.scss';
 @import './components/loader.scss';
+@import './components/search.scss';

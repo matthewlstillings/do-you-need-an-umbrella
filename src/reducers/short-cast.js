@@ -8,6 +8,10 @@ export default (state = shortCastDefaultState, action) => {
             ...state,
             action.shortcast
         ]
+
+        case 'EMPTY_SC': 
+        return [];
+
         default: 
         return state;
     }
