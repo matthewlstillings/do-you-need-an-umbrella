@@ -17,7 +17,7 @@ export const buildWeather = (store) => {
                 const html = document.querySelector('html');
                 const header = document.querySelector('.header');
                 const nav = document.querySelector('.nav');
-                const day = document.querySelector('.extended-forecast__day');
+                const forecastDay = document.querySelector('.extended-forecast__day');
                 if (sunRise > currentTime || currentTime > sunSet ) {
                     store.dispatch(fetchSun(false));
                 } else if ( sunRise < currentTime || currentTime < sunSet) {
@@ -25,7 +25,7 @@ export const buildWeather = (store) => {
                     html.classList.add('add-light');
                     header.classList.add('add-light');
                     nav.classList.add('add-light');
-                    day.classList.add('add-light');
+                    forecastDay && forecastDay.classList.add('add-light');
                 }
                 
                 //Current Weather

@@ -166,12 +166,12 @@ export class CurrentWeather extends React.Component {
          let i = 0;
          let initInterval = setInterval(()=> {
                  i += 1;
-                 if (i <= 6) {
+                 if (i <= 7) {
                      this.setState(() => ({loader: false}));
                      this.getWeatherIcon();
                      this.getUmbrellaForecast();
                      console.log('Loading Current Weather');
-                 } else if (i > 6 && this.state.iconCurrent === '') {
+                 } else if (i > 7 && this.state.iconCurrent === '') {
                      console.log('Error loading weather');
                  }
          }, 1000);
