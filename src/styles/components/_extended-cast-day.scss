@@ -1,12 +1,16 @@
 .extended-forecast__day {
     align-items: center;
+    border-bottom: 1px solid $backgroundLight;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     letter-spacing: .1rem;
     margin: auto;
-   
     width: 95%;
+}
+
+.extended-forecast__day.add-light {
+    border-bottom: 1px solid $backgroundDark;
 }
 
 .extended-forecast__day__date-container {
@@ -67,14 +71,20 @@
 
 @media (min-width: $tablet-breakpoint) {
     .extended-forecast__day {
+        border: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0;
-        margin-bottom: 12rem;
+        margin: .5rem;
+        margin-bottom: 2rem;
         width: 50%;
         min-height: 290px;
         max-width: 250px;
+        min-height: 500px;
+    }
+
+    .extended-forecast__day.add-light {
+        border: none;
     }
 
     .extended-forecast__temp-container {
@@ -111,6 +121,23 @@
         margin-bottom: -7rem;
         width: 80%;
         z-index: -10;
+    }
+
+    ////Borders
+
+    .extended-forecast__day {
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+    }
+
+ 
+
+    .extended-forecast__day.add-light:first-child {
+        border-left: 1px solid black;
+    }
+    
+    .extended-forecast__day.add-light {
+        border-right: 1px solid black;
     }
 
 }

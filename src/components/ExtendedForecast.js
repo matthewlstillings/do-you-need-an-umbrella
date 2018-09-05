@@ -9,15 +9,10 @@ export class ExtendedForecast extends React.Component {
         loader: false
     }
     setLoader = () => {
-        let i = 0;
-        let interval = setInterval(()=>{
-            i += 1;
-            if (i < 3) {
-                this.setState(()=>({loader: false}));
-            } else if (i > 3) {
-                this.setState(()=>({loader: true}))
-            }
-        }, 1000)
+        this.setState(()=>({loader: true}))
+        setTimeout(()=>{
+            this.setState(()=>({loader: false}))
+        }, 3000)
     }
     componentDidMount = () => {
         let i = 0;
@@ -35,12 +30,15 @@ export class ExtendedForecast extends React.Component {
             
             <div className="extended-forecast">
                 <h1 className="extended-forecast__title">Extended Forecast</h1>
+                <h2 className="extended-forecast__title is--for">for</h2>
+                <h1 className="extended-forecast__title">{this.props.currentWeather.city + ', ' + this.props.currentWeather.state}</h1>
                 <Search onSubmit={this.setLoader}/>
                 <div className="extended-forecast__container">
                 {
                     this.state.loader === true ? (
-                    this.props.forecast.map((day) => 
+                    this.props.forecast.map((day, index) => 
                         <ExtendedCastDay 
+                            index={index}
                             key={day.date.weekday}
                             weekday={day.date.weekday_short}
                             month={day.date.monthname_short}
@@ -68,6 +66,7 @@ export class ExtendedForecast extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        currentWeather: state.currentWeather,
         forecast: state.forecast
     };
 }

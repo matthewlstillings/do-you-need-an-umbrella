@@ -1,8 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {setTimeout} from 'timers';
 import Search from './Search';
 import ShortCast from './ShortCast';
 import Loader from './Loader';
+
 
 
 export class CurrentWeather extends React.Component {
@@ -10,7 +12,7 @@ export class CurrentWeather extends React.Component {
         shortCast: '',
         iconCurrent: '',
         forecast: '',
-        loader: false
+        loader: true
     }
     getWeatherIcon = () => {
         let condition = this.props.currentWeather.condition;
@@ -164,23 +166,21 @@ export class CurrentWeather extends React.Component {
          let i = 0;
          let initInterval = setInterval(()=> {
                  i += 1;
-                 if (i < 8) {
-                     this.setState(() => ({loader: true}));
+                 if (i <= 6) {
+                     this.setState(() => ({loader: false}));
                      this.getWeatherIcon();
                      this.getUmbrellaForecast();
-                 } 
+                     console.log('Loading Current Weather');
+                 } else if (i > 6 && this.state.iconCurrent === '') {
+                     console.log('Error loading weather');
+                 }
          }, 1000);
     }
     setLoader = () => {
-        let i = 0;
-        let interval = setInterval(()=>{
-            i += 1;
-            if (i < 3) {
-                this.setState(()=>({loader: false}));
-            } else if (i>3) {
-                this.setState(()=>({loader: true}))
-            }
-        }, 1000)
+        this.setState(()=>({loader: true}))
+        setTimeout(()=>{
+            this.setState(()=>({loader: false}))
+        }, 3000)
     }
     componentDidMount = () => {
         this.loadWeather();
@@ -193,7 +193,7 @@ export class CurrentWeather extends React.Component {
                 <Search onSubmit={
                     this.setLoader
                 } />
-                {this.state.loader == false ? (<Loader />)
+                {this.state.loader == true ? (<Loader />)
                      : ( this.state.iconCurrent === ''  ? (<Loader />) 
                         : ( <div className="current-weather">
                             

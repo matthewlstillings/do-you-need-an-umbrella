@@ -17,14 +17,15 @@ export const buildWeather = (store) => {
                 const html = document.querySelector('html');
                 const header = document.querySelector('.header');
                 const nav = document.querySelector('.nav');
+                const day = document.querySelector('.extended-forecast__day');
                 if (sunRise > currentTime || currentTime > sunSet ) {
                     store.dispatch(fetchSun(false));
-                    console.log('Sun is gone');
                 } else if ( sunRise < currentTime || currentTime < sunSet) {
                     store.dispatch(fetchSun(true));
                     html.classList.add('add-light');
                     header.classList.add('add-light');
                     nav.classList.add('add-light');
+                    day.classList.add('add-light');
                 }
                 
                 //Current Weather

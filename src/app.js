@@ -5,6 +5,7 @@ import AppRouter, {history} from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import {APIbuild} from './actions/api';
 import {buildWeather} from './components/currentWeatherBuilder';
+import {setTimeout} from 'timers';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
@@ -22,20 +23,20 @@ const buildAPI = () => {
 
 //Call Weather Fetch
 buildAPI();
+setTimeout(()=>{
+    buildWeather(store);
+}, 4000)
 
-////////////////////////Learn how to create new Promises
 setInterval(()=>{
     if (store.getState().api) {
         if (store.getState().api === store.getState().api) {
             buildWeather(store);
+            console.log('Weather State has changed');
         } else {
-            buildWeather(store);
+            console.log('Weather Matches');
         }
-    } else {
-        console.log('Loading location...');
-    }
-    
-}, 3000)
+    } 
+}, 60000)
 
 
 

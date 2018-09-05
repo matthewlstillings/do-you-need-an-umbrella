@@ -1,13 +1,18 @@
 .extended-forecast {
     margin: 0;
+    padding-top: 3rem;
     overflow: hidden;
     width: 100%;
 }
 
 .extended-forecast__title {
+    margin: .5rem;
     text-align: center;
     width: 100%;
 }
+.is--for {
+    color: $primary;
+}   
 
 @media (min-width: $tablet-breakpoint) {
     .extended-forecast__container {
@@ -16,8 +21,10 @@
         flex-direction: row;
         flex-flow: wrap;
         justify-content: center;
-        margin-top: 3rem;
+        margin: 6rem;
     }
+    
+
     .extended-forecast__title {
         font-size: 3rem;
     }
