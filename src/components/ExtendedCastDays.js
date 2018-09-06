@@ -5,7 +5,7 @@ const ExtendedCastDay = (props) => (
     <Fade bottom delay={150 * props.index} duration={300} distance={'100px'} >
         <div className="extended-forecast__day">
             <div className="extended-forecast__day__date-container">
-                <h1 className="extended-forecast__title">{props.weekday}</h1>
+                <h1 className="extended-forecast__day-name">{props.weekday}</h1>
                 <div className="extended-forecast__month-container">
                     <h1 className="extended-forecast__month">{props.month}</h1>
                     <h1 className="extended-forecast__month-day">{props.monthDay}</h1>

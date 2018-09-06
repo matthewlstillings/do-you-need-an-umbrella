@@ -1,8 +1,15 @@
 .loader-container {
     margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: center;
+            flex-direction: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100%;
 }
 
@@ -32,16 +39,32 @@
     min-height: 100px;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     z-index: 1;
 }
 
 .firstIcon {
-    animation: bounce 2s ease-in-out infinite;
+    -webkit-animation: bounce 2s ease-in-out infinite;
+            animation: bounce 2s ease-in-out infinite;
 }
 
 .secondIcon {
-    animation: bounce 2s ease-in-out 1s infinite;
+    -webkit-animation: bounce 2s ease-in-out 1s infinite;
+            animation: bounce 2s ease-in-out 1s infinite;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        margin: 0px auto 0px;
+    }
+    50% {
+        margin: -110px auto 0px;
+    }
+    100% {
+        margin: 0px auto 0px;
+    }
 }
 
 @keyframes bounce {
@@ -55,6 +78,5 @@
         margin: 0px auto 0px;
     }
 }
-
 
 

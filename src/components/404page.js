@@ -4,15 +4,13 @@ import {history} from '../routers/AppRouter';
 import Loader from './Loader';
 
 export class NotFoundPage extends React.Component {
-    returnToCurrent = () => {
-        history.push('/weather');
-    }
-    componentDidMount = () => {
-        this.returnToCurrent();
-    }
     render() {
         return (
-            <Loader />
+            <div className="not-found">
+                <h1 className="not-found__title">Oops! Wrong way!</h1>
+                <img className="not-found__image" src={'./images/WeatherIcons/unknown.svg'} />
+                <h2 className="not-found__subtitle">Please return to <span className="help__content-link" >home.</span></h2> 
+            </div>
         )
     }
    

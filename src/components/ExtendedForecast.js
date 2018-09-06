@@ -3,16 +3,21 @@ import {connect} from 'react-redux';
 import ExtendedCastDay from './ExtendedCastDays';
 import Loader from './Loader';
 import Search from './Search';
+import {Fade} from 'react-reveal';
 
 export class ExtendedForecast extends React.Component {
     state = {
-        loader: false
+        loader: false,
+        error: ''
     }
     setLoader = () => {
         this.setState(()=>({loader: true}))
         setTimeout(()=>{
             this.setState(()=>({loader: false}))
         }, 3000)
+    }
+    setError = (error) => {
+        this.setState(()=>({error}));
     }
     componentDidMount = () => {
         let i = 0;
@@ -32,7 +37,8 @@ export class ExtendedForecast extends React.Component {
                 <h1 className="extended-forecast__title">Extended Forecast</h1>
                 <h2 className="extended-forecast__title is--for">for</h2>
                 <h1 className="extended-forecast__title">{this.props.currentWeather.city + ', ' + this.props.currentWeather.state}</h1>
-                <Search onSubmit={this.setLoader}/>
+                <Search onSubmit={this.setLoader} setError={this.setError}/>
+                <Fade top opposite when={this.state.error}><p className="search-error">{this.state.error}</p></Fade>
                 <div className="extended-forecast__container">
                 {
                     this.state.loader === true ? (

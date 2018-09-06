@@ -4,6 +4,7 @@ import {setTimeout} from 'timers';
 import Search from './Search';
 import ShortCast from './ShortCast';
 import Loader from './Loader';
+import {Fade} from 'react-reveal';
 
 
 
@@ -12,7 +13,11 @@ export class CurrentWeather extends React.Component {
         shortCast: '',
         iconCurrent: '',
         forecast: '',
-        loader: true
+        loader: true,
+        error: ''
+    }
+    setError = (error) => {
+        this.setState(()=>({error}));
     }
     getWeatherIcon = () => {
         let condition = this.props.currentWeather.condition;
@@ -188,11 +193,10 @@ export class CurrentWeather extends React.Component {
     render() {
         return (
             
-            <div>
+            <div className="current-weather__page">
                 <h1 className="extended-forecast__title">Current Weather</h1>
-                <Search onSubmit={
-                    this.setLoader
-                } />
+                <Search onSubmit={this.setLoader} setError={this.setError}/>
+                <Fade top opposite when={this.state.error}><p className="search-error">{this.state.error}</p></Fade>
                 {this.state.loader == true ? (<Loader />)
                      : ( this.state.iconCurrent === ''  ? (<Loader />) 
                         : ( <div className="current-weather">

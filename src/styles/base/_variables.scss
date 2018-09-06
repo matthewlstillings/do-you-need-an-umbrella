@@ -16,83 +16,10 @@ $tablet-breakpoint: 593px;
 $main-font: 'Roboto Condensed', sans-serif;
 
 //Mixins
-@mixin form-title-styles {
-    text-align: center;
-    color: white;
-}
-
-@mixin form-container-styles {
+%help-404-page-container {
+    font-size: 2em;
     margin: auto;
-    width: 90%;
-    max-width: 350px;
-}
-
-@mixin form-styles {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-@mixin button-click {
-    background: darken($light-primary, 10%);
-    -webkit-box-shadow: inset 0px 0px 19px -4px rgba(0,0,0,1);
-    -moz-box-shadow: inset 0px 0px 19px -4px rgba(0,0,0,1);
-    box-shadow: inset 0px 0px 19px -4px rgba(0,0,0,1);
-}
-
-@mixin input-default-remove {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    outline: none;
-}
-
-@mixin input-styles {
-    color: white;
-    padding: 1rem 0 .5rem 1rem;
-    width: 100%;
-    margin: 0 auto .7rem .5rem;
-    border-bottom: .8px solid lighten($secondary, 10%);
-    border-radius: 0;
-}
-
-@mixin expense-form-input-placeholder {
-    color: lighten($primary, 30%);
-    font-family: $main-font;
-    font-weight: 600;
-}
-
-@mixin expense-form-input-focus {
-    box-shadow: 0px 1px 0 0 $secondary;
-}
-
-@mixin button-defaults {
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 10px 1rem;
-    cursor: pointer;
-    font-weight: 600;
-    color: white;
-    font-family: $main-font;
-    outline: none;
-}
-
-@mixin submit-button {
-    background-color: $green;
-    border-radius: 2px;
-    color: $white;
-    font-family: $main-font;
-    font-weight: 800;
-    letter-spacing: .1rem;
-    margin: 1rem 0 0 auto;
-    padding: 1rem;
-    transition: background-color 1s ease;
-}
-
-@mixin error-styles {
-    color: $secondary;
-    animation: error-fade 3s ease-out forwards;
-    margin: auto;
+    max-width: 500px;
+    padding: 2rem 1rem;
     width: 100%;
 }

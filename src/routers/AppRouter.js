@@ -5,6 +5,7 @@ import NotFoundPage from '../components/404page';
 import Header from '../components/header';
 import CurrentWeather from '../components/CurrentWeather';
 import ExtendedForecast from '../components/ExtendedForecast';
+import HelpPage from '../components/HelpPage';
 
 
 export const history = createHistory();
@@ -15,13 +16,17 @@ const AppRouter = () => (
             <Header />
             <Switch>
                 <Route
-                    path="/weather" 
+                    path="/" 
                     component={CurrentWeather}
                     exact={true}
                 />
                 <Route
                     path="/extended"
                     component={ExtendedForecast} 
+                />
+                <Route
+                    path="/help"
+                    component={HelpPage}
                 />
                 <Route
                     component={NotFoundPage}

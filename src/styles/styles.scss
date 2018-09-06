@@ -1,10 +1,9 @@
+//Base
 @import './base/variables.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 @import './base/base.scss';
 
 //Components
-
-@import './components/dashboard.scss';
 @import './components/header.scss';
 @import './components/current-condition.scss';
 @import './components/short-cast.scss';
@@ -12,3 +11,5 @@
 @import './components/extended-cast-day.scss';
 @import './components/loader.scss';
 @import './components/search.scss';
+@import './components/help-page.scss';
+@import './components/404.scss';
